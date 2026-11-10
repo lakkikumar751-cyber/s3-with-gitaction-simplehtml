@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lakki Kumar — Frontend Developer specializing in React, Next.js, TypeScript, and AI-powered applications." />
+  <title>Lakki Kumar | Frontend Developer</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --surface: #111a2e;
+      --surface-2: #172238;
+      --text: #edf2ff;
+      --muted: #a6b1c7;
+      --line: rgba(190, 205, 235, .14);
+      --accent: #7c9cff;
+      --accent-2: #69e0c1;
+      --max: 1120px;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+    body {
+      margin: 0; color: var(--text);
+      background: radial-gradient(circle at 80% 0%, rgba(75, 104, 190, .18), transparent 34%), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent-2); }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(18px);
+      background: rgba(11, 16, 32, .82); border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.15rem; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--text); }
+    .menu-btn { display: none; border: 1px solid var(--line); background: var(--surface); color: var(--text); padding: 8px 12px; border-radius: 10px; }
+    .hero { padding: 104px 0 88px; display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 56px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent-2); font-size: .82rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 14px var(--accent-2); }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.4rem); line-height: 1.04; letter-spacing: -.065em; margin: 20px 0; }
+    h1 span { color: var(--accent); }
+    .hero p { color: var(--muted); max-width: 680px; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 12px 19px; border-radius: 12px; font-weight: 700; border: 1px solid var(--line); transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #081020; background: var(--accent-2); border-color: var(--accent-2); }
+    .btn-secondary { background: rgba(255,255,255,.035); }
+    .hero-card {
+      padding: 28px; border: 1px solid var(--line); border-radius: 24px;
+      background: linear-gradient(145deg, rgba(124,156,255,.13), rgba(17,26,46,.85));
+      box-shadow: 0 24px 70px rgba(0,0,0,.2);
+    }
+    .avatar { width: 76px; height: 76px; display: grid; place-items: center; border-radius: 22px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #081020; font-size: 1.8rem; font-weight: 900; }
+    .hero-card h3 { margin: 20px 0 4px; font-size: 1.25rem; }
+    .hero-card p { margin: 0; font-size: .92rem; }
+    .quick-info { display: grid; gap: 13px; margin-top: 24px; color: var(--muted); font-size: .9rem; }
+    .quick-info div { display: flex; gap: 10px; align-items: center; }
+    section { padding: 76px 0; }
+    .section-head { margin-bottom: 30px; }
+    .kicker { color: var(--accent-2); font-weight: 700; text-transform: uppercase; letter-spacing: .13em; font-size: .76rem; }
+    h2 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; letter-spacing: -.045em; margin: 8px 0 10px; }
+    .section-head p { color: var(--muted); max-width: 700px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+    .panel p { color: var(--muted); margin: 0; }
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .stat { background: var(--surface-2); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+    .stat strong { display: block; color: var(--accent-2); font-size: 1.8rem; letter-spacing: -.05em; }
+    .stat span { color: var(--muted); font-size: .85rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-card h3 { margin: 0 0 14px; font-size: 1.02rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-size: .82rem; color: #d9e2f7; background: rgba(124,156,255,.1); border: 1px solid rgba(124,156,255,.19); padding: 6px 10px; border-radius: 999px; }
+    .timeline { display: grid; gap: 16px; }
+    .timeline-item { display: grid; grid-template-columns: 190px 1fr; gap: 24px; }
+    .timeline-date { color: var(--accent-2); font-size: .9rem; font-weight: 700; padding-top: 5px; }
+    .timeline-content h3 { margin: 0; font-size: 1.12rem; }
+    .timeline-content .sub { color: var(--muted); font-size: .9rem; margin: 2px 0 12px; }
+    ul.clean { padding-left: 19px; margin: 0; color: var(--muted); }
+    ul.clean li { margin: 7px 0; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project-card { display: flex; flex-direction: column; min-height: 100%; }
+    .project-top { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .project-icon { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 13px; background: rgba(105,224,193,.12); color: var(--accent-2); font-size: 1.3rem; }
+    .project-card h3 { margin: 18px 0 3px; font-size: 1.22rem; }
+    .project-type { color: var(--accent-2); font-size: .82rem; font-weight: 700; }
+    .project-card p { color: var(--muted); font-size: .94rem; }
+    .project-card ul { margin-bottom: 20px; }
+    .project-card .tags { margin-top: auto; }
+    .education { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .education h3 { margin: 0; }
+    .education p, .education span { color: var(--muted); margin: 4px 0 0; }
+    .contact-box { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 34px; border-radius: 22px; border: 1px solid var(--line); background: linear-gradient(120deg, rgba(124,156,255,.16), rgba(105,224,193,.08)); }
+    .contact-box p { color: var(--muted); margin: 8px 0 0; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: .85rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; padding-top: 76px; gap: 32px; }
+      .hero-card { max-width: 480px; }
+      .about-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+      .contact-box { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 580px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      nav { min-height: 64px; }
+      .menu-btn { display: block; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; padding: 18px 22px; flex-direction: column; align-items: flex-start; background: #10182b; border-bottom: 1px solid var(--line); }
+      .nav-links.open { display: flex; }
+      .hero { padding: 65px 0 55px; }
+      section { padding: 58px 0; }
+      .about-grid, .skills-grid, .project-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .education { align-items: flex-start; flex-direction: column; }
+      .contact-box { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="container">
+      <a class="brand" href="#home">Lakki<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <header class="container hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Frontend Developer · Immediate joiner</div>
+        <h1>Hi, I'm Lakki<br /><span>I build for the web.</span></h1>
+        <p>Frontend Developer with 3+ years of experience building scalable B2B SaaS lead generation and analytics platforms. I work with React, Next.js, TypeScript, and Redux Toolkit, and build AI-powered features using LLMs, RAG, and function calling.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:lakkikumar751@gmail.com">Let's talk ↗</a>
+          <a class="btn btn-secondary" href="#projects">Explore my work ↓</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="avatar">LK</div>
+        <h3>Lakki Kumar</h3>
+        <p>Frontend Developer</p>
+        <div class="quick-info">
+          <div>⌖ <span>Mohali, Punjab, India</span></div>
+          <div>✉ <a href="mailto:lakkikumar751@gmail.com">lakkikumar751@gmail.com</a></div>
+          <div>☎ <a href="tel:+917087872911">+91 7087872911</a></div>
+          <div>↗ <a href="https://linkedin.com/in/lakki-kumar" target="_blank" rel="noopener">LinkedIn profile</a></div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head"><div class="kicker">About me</div><h2>Building useful, responsive experiences.</h2><p>I focus on clean frontend architecture, practical performance improvements, and interfaces that make complex data easier to work with.</p></div>
+        <div class="about-grid">
+          <div class="panel"><p>My experience includes building lead generation tools, analytics dashboards, role-based interfaces, and AI-assisted workflows. I enjoy turning complex product requirements into reusable UI components and maintainable frontend solutions. I also work with REST APIs, authentication, and modern application performance techniques.</p></div>
+          <div class="stats">
+            <div class="stat"><strong>3+</strong><span>Years of experience</span></div>
+            <div class="stat"><strong>35%</strong><span>Development efficiency improvement*</span></div>
+            <div class="stat"><strong>2</strong><span>Featured platforms</span></div>
+            <div class="stat"><strong>AI</strong><span>LLM, RAG & tool calling</span></div>
+          </div>
+        </div>
+        <p style="font-size:.78rem;color:var(--muted);margin:12px 2px 0">*As stated in the resume, through reusable components and optimized state management.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head"><div class="kicker">My toolkit</div><h2>Skills & technologies</h2><p>Technologies and tools listed in my professional experience.</p></div>
+        <div class="skills-grid">
+          <div class="panel skill-card"><h3>Frontend</h3><div class="tags"><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">JavaScript ES6+</span><span class="tag">Redux</span><span class="tag">Redux Toolkit</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Tailwind CSS</span><span class="tag">Material UI</span><span class="tag">Responsive Design</span><span class="tag">Accessibility</span></div></div>
+          <div class="panel skill-card"><h3>AI & LLM Integration</h3><div class="tags"><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">Function Calling</span><span class="tag">Prompt Engineering</span><span class="tag">OpenAI</span><span class="tag">Gemini</span><span class="tag">Claude</span></div></div>
+          <div class="panel skill-card"><h3>APIs & Security</h3><div class="tags"><span class="tag">REST APIs</span><span class="tag">Axios</span><span class="tag">WebSockets</span><span class="tag">Authentication</span><span class="tag">OAuth</span><span class="tag">JWT</span></div></div>
+          <div class="panel skill-card"><h3>Architecture & Performance</h3><div class="tags"><span class="tag">Core Web Vitals</span><span class="tag">Code Splitting</span><span class="tag">SEO Optimization</span><span class="tag">State Management</span><span class="tag">Reusable Components</span></div></div>
+          <div class="panel skill-card"><h3>Tools & Testing</h3><div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Webpack</span><span class="tag">npm</span><span class="tag">Jest</span><span class="tag">React Testing Library</span><span class="tag">Chrome DevTools</span><span class="tag">Figma</span></div></div>
+          <div class="panel skill-card"><h3>Other</h3><div class="tags"><span class="tag">Node.js</span><span class="tag">NoSQL</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Career</div><h2>Work experience</h2><p>My professional experience as a frontend developer.</p></div>
+        <div class="timeline">
+          <article class="panel timeline-item">
+            <div class="timeline-date">Jun 2024 – Jul 2026</div>
+            <div class="timeline-content">
+              <h3>Frontend Developer · Clepr Technologies</h3><div class="sub">Full-time · Mohali, Punjab, India</div>
+              <ul class="clean">
+                <li>Built key modules of a Lead Generation Intelligence Platform using Next.js and TypeScript, including advanced filters for firmographic, technographic, and intent data, plus CRM enrichment workflows.</li>
+                <li>Developed an AI assistant using LLMs, RAG, embeddings, vector search, and function calling, allowing users to search, filter, and manage lead data through natural-language commands.</li>
+                <li>Built the Readability Tutor Analytics Dashboard with role-based access control (RBAC) and interactive ApexCharts visualizations to track student progress.</li>
+                <li>Improved development efficiency by building reusable components and standardizing state management with Redux Toolkit, reducing redundant API calls and re-renders.</li>
+                <li>Created responsive UI components with Tailwind CSS and Material UI, including searchable dropdowns, advanced filters, and dataset listing interfaces.</li>
+                <li>Refactored frontend code to improve quality, maintainability, reusability, and scalability.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="panel timeline-item">
+            <div class="timeline-date">Apr 2023 – May 2024</div>
+            <div class="timeline-content">
+              <h3>Frontend Developer · Aurastack</h3><div class="sub">Full-time · Mohali, Punjab, India</div>
+              <ul class="clean">
+                <li>Built a Job Search Portal and Freelance Marketplace Platform using Next.js, TypeScript, JavaScript, and React, with scalable architecture and reusable, mobile-first UI components.</li>
+                <li>Optimized frontend performance using lazy loading, code splitting, and Next.js rendering strategies to improve page load speed and application responsiveness.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Selected work</div><h2>Featured projects</h2><p>A closer look at platforms and features from my experience.</p></div>
+        <div class="project-grid">
+          <article class="panel project-card">
+            <div class="project-top"><div class="project-icon">⌕</div><span class="project-type">B2B SaaS</span></div>
+            <h3>Lead411 Lead Generation Intelligence Platform</h3>
+            <p>A sales intelligence platform that helps teams identify, research, and manage potential customers.</p>
+            <ul class="clean">
+              <li>Developed scalable frontend modules for efficient lead discovery and management.</li>
+              <li>Implemented an AI-powered RAG system with LLMs, embeddings, and vector search to find information across setup guides, workflows, and product documentation.</li>
+              <li>Optimized large-data interfaces to reduce unnecessary renders and improve responsiveness with high-volume lead records.</li>
+            </ul>
+            <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Redux Toolkit</span><span class="tag">MUI</span><span class="tag">LLMs</span><span class="tag">RAG</span></div>
+            <p style="margin:18px 0 0"><a href="https://lead411.com" target="_blank" rel="noopener">Visit Lead411 ↗</a></p>
+          </article>
+          <article class="panel project-card">
+            <div class="project-top"><div class="project-icon">▥</div><span class="project-type">EdTech Analytics</span></div>
+            <h3>Readability Tutor Analytics Dashboard</h3>
+            <p>An analytics dashboard designed to help users track student progress through role-specific views and visual reports.</p>
+            <ul class="clean">
+              <li>Implemented role-based UI rendering for dashboards, navigation, and data according to user permissions.</li>
+              <li>Improved image-heavy views containing book covers and page images by using Web Workers to keep the main thread free and make scrolling and loading smoother.</li>
+              <li>Created interactive analytics visualizations using ApexCharts.</li>
+            </ul>
+            <div class="tags"><span class="tag">React.js</span><span class="tag">TypeScript</span><span class="tag">ApexCharts</span><span class="tag">RBAC</span><span class="tag">Web Workers</span><span class="tag">RTK</span></div>
+            <p style="margin:18px 0 0"><a href="https://readabilitytutor.com" target="_blank" rel="noopener">Visit Readability Tutor ↗</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Education</div><h2>Academic background</h2></div>
+        <div class="panel education">
+          <div><h3>Bachelor of Engineering in Computer Science</h3><p>Chandigarh University · Punjab, India</p></div>
+          <span>Aug 2017 – May 2021</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div><div class="kicker">Get in touch</div><h2>Let's build something useful.</h2><p>I'm an immediate joiner and open to frontend development opportunities.</p></div>
+          <div class="hero-actions" style="margin:0">
+            <a class="btn btn-primary" href="mailto:lakkikumar751@gmail.com">Email me ↗</a>
+            <a class="btn btn-secondary" href="https://linkedin.com/in/lakki-kumar" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><span>© <span id="year"></span> Lakki Kumar. All rights reserved.</span><span>Frontend Developer · Mohali, India</span></div></footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
